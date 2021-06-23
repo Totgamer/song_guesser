@@ -1,18 +1,5 @@
 $(window).on('load', function() {
 
-    $("#next").on("click", function () {
-        console.log('test');
-        $.ajax({
-            url:"index.php",    //the page containing php script
-            type: "post",    //request type,
-            dataType: 'json',
-            data: {function: "next"},
-            success:function(result){
-                console.log(result);
-            }
-        });
-    });
-
     var fail = 0;
 
     $('.choice').on('click', function(){
@@ -22,7 +9,7 @@ $(window).on('load', function() {
         var song = $(this).text();
         $.ajax({
             type: "POST",
-            url: 'functions.php',
+            url: 'src/functions.php',
             data: {song: song},
             success: function(data){
                 console.log(data);
