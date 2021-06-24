@@ -6,7 +6,7 @@ $api = new SpotifyWebAPI\SpotifyWebAPI();
 
 // Fetch the saved access token from somewhere. A session for example.
 if(!isset($_SESSION["spotifyAccesToken"])) {
-    header('location: auth.php');
+    header('location: src/auth.php');
 } else {
     $accessToken = $_SESSION["spotifyAccesToken"];
 }
@@ -14,7 +14,7 @@ $api->setAccessToken($accessToken);
 
 // It's now possible to request data about the currently authenticated user
 
-// top tracks
+// artists id's of featured artists
 $artists = array(
     '6jJ0s89eD6GaHleKKya26X',
     '64KEffDW9EtZ1y2vBYgq8T', 

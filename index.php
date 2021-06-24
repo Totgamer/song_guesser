@@ -10,7 +10,10 @@
     <title>Document</title>
 </head>
 <body>
+    
     <div id="container">
+        <div id="wins" class="score">Wins: 0</div>
+        <div id="fails" class="score">Fails: 0</div>
         <h1>Spotify Song guesser</h1>
         <i id="play" class="fas fa-play"></i>
         <div id="form">

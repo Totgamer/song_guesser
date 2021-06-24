@@ -1,6 +1,7 @@
 $(window).on('load', function() {
 
     var fail = 0;
+    var win = 0;
 
     $('.choice').on('click', function(){
         $(this).parent().find('.choice').removeClass('selected');
@@ -16,9 +17,43 @@ $(window).on('load', function() {
                 if(data == "false"){
                     $(obj).addClass('wrong');
                     fail++;
+                    $("#fails").html("Fails: " + fail);
                     console.log(fail);
                 } else {
                     $(obj).addClass('selected');
+                    audio.pause();
+                    win++;
+                    $("#wins").html("Wins: " + win);
+
+                    if($("#play").hasClass("fa-pause")){
+                        $("#play").removeClass("fa-pause");
+                        $("#play").addClass("fa-play");
+                    }
+                    
+                    setTimeout(function(){
+                        $(obj).removeClass('selected')
+                        $("#form .choice").removeClass("wrong");
+
+                        $.ajax({
+                            type: "POST",
+                            url: 'src/functions.php',
+                            data: {next: "next"},
+                            dataType: 'json',
+                            success: function(data){
+                                audio = new Audio(data[3]);
+                                console.log(data);
+                                
+                                $(".choice").each(function(i=0){
+                                    $(this).text(data[i]);
+                                    console.log(data[i]);
+                                    i++;
+                                });
+                            },
+                            error: function(xhr, status, error){
+                            console.error(xhr);
+                            }
+                        });
+                      }, 500);
                 }
             },
             error: function(xhr, status, error){
