@@ -9,26 +9,14 @@ $session = new SpotifyWebAPI\Session(
     'http://localhost/school/spotify/song/'
 );
 
-$state = $session->generateState();
-$options = [
-    'scope' => [
-        'user-read-email',
-        'user-read-playback-state',
-        'streaming',
-        'user-read-private',
-    ],
-    'state' => $state,
-];
-
 $session->requestCredentialsToken();
 $accessToken = $session->getAccessToken();
 
 
 $_SESSION["spotifyAccesToken"] = $accessToken;
-$_SESSION["storedState"] = $state;
 // Store the access token somewhere. In a database for example.
 
 // Send the user along and fetch some data!
 
-header('Location: ' . $session->getAuthorizeUrl($options));
+header('Location: ' . $session->getAuthorizeUrl());
 die();
