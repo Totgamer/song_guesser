@@ -23,6 +23,7 @@ $artists = array(
     '1uNFoZAHBGtllmzznpCI3s',
     '4MCBfE4596Uoi2O4DtmEMz',
     '2ylIKKdMukkuprCgY4ZDFE',
+    '1McMsnEElThX1knmY4oliG',
 );
 $tracksPreview = array();
 foreach($artists as $artist) {

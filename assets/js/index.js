@@ -18,7 +18,6 @@ $(window).on('load', function() {
                     $(obj).addClass('wrong');
                     fail++;
                     $("#fails").html("Fails: " + fail);
-                    console.log(fail);
                 } else {
                     $(obj).addClass('selected');
                     audio.pause();
@@ -41,11 +40,9 @@ $(window).on('load', function() {
                             dataType: 'json',
                             success: function(data){
                                 audio = new Audio(data[3]);
-                                console.log(data);
                                 
                                 $(".choice").each(function(i=0){
                                     $(this).text(data[i]);
-                                    console.log(data[i]);
                                     i++;
                                 });
                             },
